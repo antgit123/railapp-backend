@@ -1,0 +1,39 @@
+# packages/api-client/codegen.yml
+# Backend Agent — Week 1 Deliverable
+# Ticket: RAIL-006
+#
+# Run: npm run codegen
+# Output: src/generated/ — DO NOT EDIT (auto-generated)
+
+schema:
+  - ${ALL_ABOARD_API_URL}:
+      headers:
+        authorization: "ApiKey ${ALL_ABOARD_API_KEY_DEV}"
+
+documents:
+  - "src/operations/**/*.graphql"
+
+generates:
+  src/generated/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      strictScalars: true
+      scalars:
+        DateTime: string
+        Date: string
+        Money: "{ amount: number; currency: string }"
+        UUID: string
+      avoidOptionals:
+        field: true         # no ?-optionals — use explicit T | null
+        inputValue: false
+      nonOptionalTypename: true
+      enumsAsTypes: true    # string union types not TS enums (per SKILL)
+
+  src/generated/client.ts:
+    plugins:
+      - typescript-graphql-request
+    config:
+      rawRequest: false
+      extensionsType: unknown

@@ -1,0 +1,37 @@
+# packages/api-client/src/operations/journeys.graphql
+# All Aboard API — Journey Search Operation
+
+query GetJourneys(
+  $origin: String!
+  $destination: String!
+  $date: Date!
+  $passengers: Int!
+) {
+  journeys(
+    origin: $origin
+    destination: $destination
+    date: $date
+    passengers: $passengers
+  ) {
+    id
+    itinerary {
+      duration
+      stops {
+        name
+        arrival
+        departure
+        platform
+      }
+      legs {
+        origin { name code }
+        destination { name code }
+        departure
+        arrival
+        duration
+        operator { name logo }
+        serviceClass
+        trainNumber
+      }
+    }
+  }
+}

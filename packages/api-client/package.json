@@ -1,0 +1,30 @@
+{
+  "name": "@railbook/api-client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "graphql": "^16.0.0",
+    "graphql-request": "^7.0.0",
+    "graphql-ws": "^5.0.0",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.0",
+    "@graphql-codegen/typescript-operations": "^4.0.0",
+    "@graphql-codegen/typescript-graphql-request": "^6.0.0",
+    "msw": "^2.0.0",
+    "typescript": "^5.5.0"
+  }
+}
